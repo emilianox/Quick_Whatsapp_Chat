@@ -11,6 +11,8 @@ const WextManifestWebpackPlugin = require('wext-manifest-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
+const manifest = require('./source/manifest.json');
+
 const viewsPath = path.join(__dirname, 'views');
 const sourcePath = path.join(__dirname, 'source');
 const destPath = path.join(__dirname, 'extension');
@@ -26,7 +28,7 @@ const extensionReloaderPlugin =
           // TODO: reload manifest on update
           contentScript: 'contentScript',
           background: 'background',
-          extensionPage: ['popup', 'options'],
+          extensionPage: ['popup'],
         },
       })
     : () => {
@@ -62,7 +64,6 @@ module.exports = {
     background: path.join(sourcePath, 'Background', 'index.ts'),
     contentScript: path.join(sourcePath, 'ContentScript', 'index.ts'),
     popup: path.join(sourcePath, 'Popup', 'index.tsx'),
-    options: path.join(sourcePath, 'Options', 'index.tsx'),
   },
 
   output: {
@@ -150,12 +151,6 @@ module.exports = {
       chunks: ['popup'],
       filename: 'popup.html',
     }),
-    new HtmlWebpackPlugin({
-      template: path.join(viewsPath, 'options.html'),
-      inject: 'body',
-      chunks: ['options'],
-      filename: 'options.html',
-    }),
     // write css file(s) to build folder
     new MiniCssExtractPlugin({filename: 'css/[name].css'}),
     // copy static assets
@@ -184,7 +179,7 @@ module.exports = {
       new ZipPlugin({
         path: destPath,
         extension: `${getExtensionFileType(targetBrowser)}`,
-        filename: `${targetBrowser}`,
+        filename: `quick_whatsapp_chat-${targetBrowser}-${manifest.version}`,
       }),
     ],
   },

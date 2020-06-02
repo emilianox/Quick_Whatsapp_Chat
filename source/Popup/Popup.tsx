@@ -17,7 +17,7 @@ const Popup: React.FC = () => {
   const changePrefix = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const {value} = event.target;
     chrome.storage.sync.set({prefixValue: value}, () => {
-      setPrefixValue(value);
+      setPrefixValue(value || '');
     });
   };
 
@@ -43,7 +43,7 @@ const Popup: React.FC = () => {
         <input
           type="text"
           id="Prefix"
-          placeholder="Optional Prefix"
+          placeholder="Saved Prefix"
           name="numberToCall"
           className="w-2/5 focus:outline-none"
           spellCheck="false"
