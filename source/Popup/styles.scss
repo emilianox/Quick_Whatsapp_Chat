@@ -1,0 +1,36 @@
+// @import "../styles/fonts";
+// @import "../styles/reset";
+// @import "../styles/variables";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  min-width: 24rem
+}
+
+
+#popup-root {
+  input[type=text]{
+    @apply bg-white border border-gray-300 rounded-sm py-1 px-1 appearance-none leading-normal ;
+  }
+  
+  .btn {
+    @apply font-bold py-2 px-4 rounded;
+  }
+  .btn-blue {
+    @apply text-white;
+    background-color: #2cb742;
+  }
+  
+  .btn-blue:hover {
+    background-color: #177225;
+  }
+  
+  .grey-block{
+    @apply p-3;
+    border-bottom: 1px solid #E7E8EA;
+    background-color:#F7F9FA
+  }
+}
