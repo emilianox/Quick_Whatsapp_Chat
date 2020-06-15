@@ -43,4 +43,4 @@ Emiliano Fernandez – [@emilianohf](https://twitter.com/emilianohf)
 
 Distributed under the MIT license. See ``LICENSE`` for more information.
 
-[https://github.com/emilianox/github-link](https://github.com/emilianox/)
+[https://github.com/emilianox/Quick_Whatsapp_Chat](https://github.com/emilianox/Quick_Whatsapp_Chat)
