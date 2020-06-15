@@ -64,7 +64,6 @@ const Popup: React.FC = () => {
           autoFocus
           value={numberToChat}
           onChange={(e): void => setNumberToChat(e.target.value)}
-          required
         />
       </div>
       <div className="px-3 pb-2 flex flex-row-reverse">

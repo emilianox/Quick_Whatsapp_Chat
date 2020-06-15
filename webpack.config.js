@@ -179,7 +179,7 @@ module.exports = {
       new ZipPlugin({
         path: destPath,
         extension: `${getExtensionFileType(targetBrowser)}`,
-        filename: `quick_whatsapp_chat-${targetBrowser}-${manifest.version}`,
+        filename: `quick_whatsapp_chat-${targetBrowser}-extension-${manifest.version}`,
       }),
     ],
   },
