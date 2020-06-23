@@ -30,6 +30,9 @@ npm run build:opera
 
 
 ## Release History
+* 2.0.2
+    * add flags input
+
 * 2.0.1
     * Fix required data
     * Added Readme.

@@ -1,6 +1,6 @@
 {
   "name": "quick_whatsapp_chat",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Chrome extencion to start a Whatsapp chat without adding the number to contacts...",
   "private": true,
   "repository": "https://github.com:emilianox/Quick_Whatsapp_Chat.git",
@@ -24,10 +24,12 @@
   "dependencies": {
     "@babel/runtime": "^7.9.6",
     "@types/chrome": "0.0.114",
+    "@types/react-phone-number-input": "^3.0.4",
     "advanced-css-reset": "^1.1.1",
     "emoji-log": "^1.0.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-phone-number-input": "^3.0.23",
     "tailwindcss": "^1.4.6",
     "webext-base-css": "^1.1.0",
     "webextension-polyfill-ts": "^0.15.0"

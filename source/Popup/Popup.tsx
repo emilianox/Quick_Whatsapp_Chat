@@ -3,6 +3,9 @@ import {browser, Tabs} from 'webextension-polyfill-ts';
 
 import './styles.scss';
 
+import 'react-phone-number-input/style.css';
+import PhoneInput from 'react-phone-number-input';
+
 const Popup: React.FC = () => {
   const [numberToChat, setNumberToChat] = useState<string>('');
   const [prefixValue, setPrefixValue] = useState<string>('');
@@ -14,8 +17,12 @@ const Popup: React.FC = () => {
     return browser.tabs.create({url});
   }
 
-  const changePrefix = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    const {value} = event.target;
+  const changePrefix = (valueFromWidget: string): void => {
+    // const {value} = event.target;
+    console.log('valueFromWidget', valueFromWidget);
+    const value = valueFromWidget || '';
+    console.log('value', value);
+
     chrome.storage.sync.set({prefixValue: value}, () => {
       setPrefixValue(value || '');
     });
@@ -40,22 +47,19 @@ const Popup: React.FC = () => {
         </label>
       </div>
       <div className="px-3 flex space-x-1">
-        <input
-          type="text"
+        <PhoneInput
           id="Prefix"
-          placeholder="Saved Prefix"
           name="numberToCall"
-          className="w-2/5 focus:outline-none"
-          spellCheck="false"
-          autoComplete="off"
+          international
+          className="w-2/5"
           value={prefixValue}
           onChange={changePrefix}
-          required
         />
+
         <input
           type="text"
           id="numberToCall"
-          className="w-3/5 focus:outline-none"
+          className="w-3/5"
           name="numberToCall"
           placeholder="Number"
           spellCheck="false"

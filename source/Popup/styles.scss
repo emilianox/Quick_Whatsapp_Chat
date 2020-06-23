@@ -8,8 +8,11 @@ body {
 
 
 #popup-root {
-  input[type=text]{
+  input{
     @apply bg-white border border-gray-300 rounded-sm py-1 px-1 appearance-none leading-normal ;
+    &:focus{
+      outline: 0;
+    }
   }
   
   .btn {
