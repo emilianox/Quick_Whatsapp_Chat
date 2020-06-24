@@ -71,7 +71,7 @@ const Popup: React.FC = () => {
         />
       </div>
       <div className="px-3 pb-2 flex flex-row-reverse">
-        <input type="submit" className="btn btn-blue" value="Start" />
+        <input type="submit" className="btn btn-blue" value="Start chat" />
       </div>
     </form>
   );

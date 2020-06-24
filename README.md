@@ -2,7 +2,7 @@
 > Chrome extencion to start a Whatsapp chat without adding the number to contacts...
 
 
-![](source/assets/screenshoot.png)
+![](screenshoot.png)
 
 
 ## Development setup
@@ -30,6 +30,10 @@ npm run build:opera
 
 
 ## Release History
+* 2.0.3
+    * remove extra permisions
+    * optimize png
+
 * 2.0.2
     * add flags input
 
