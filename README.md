@@ -30,6 +30,9 @@ npm run build:opera
 
 
 ## Release History
+* 2.0.4
+    * add firefox support
+
 * 2.0.3
     * remove extra permisions
     * optimize png
