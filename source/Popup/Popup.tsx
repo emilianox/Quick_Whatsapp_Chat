@@ -9,7 +9,7 @@ import PhoneInput from 'react-phone-number-input';
 const Popup: React.FC = () => {
   const [numberToChat, setNumberToChat] = useState<string>('');
   const [prefixValue, setPrefixValue] = useState<string>('');
-  chrome.storage.sync.get('prefixValue', (result) => {
+  browser.storage.sync.get('prefixValue').then((result) => {
     setPrefixValue(result.prefixValue);
   });
 
@@ -23,7 +23,7 @@ const Popup: React.FC = () => {
     const value = valueFromWidget || '';
     console.log('value', value);
 
-    chrome.storage.sync.set({prefixValue: value}, () => {
+    browser.storage.sync.set({prefixValue: value}).then(() => {
       setPrefixValue(value || '');
     });
   };
@@ -34,7 +34,9 @@ const Popup: React.FC = () => {
     event.preventDefault();
     return openWebPage(
       `https://web.whatsapp.com/send?phone=${prefixValue}${numberToChat}`
-    );
+    ).then(() => {
+      window.close();
+    });
   };
   return (
     <form

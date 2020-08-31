@@ -1,5 +1,5 @@
 # Quick Whatsapp Chat
-> Chrome extencion to start a Whatsapp chat without adding the number to contacts...
+> Chrome/Firefox extencion to start a Whatsapp chat without adding the number to contacts...
 
 
 ![](screenshoot.png)
@@ -49,5 +49,7 @@ npm run build:opera
 Emiliano Fernandez – [@emilianohf](https://twitter.com/emilianohf)
 
 Distributed under the MIT license. See ``LICENSE`` for more information.
+
+PRs are welcome!
 
 [https://github.com/emilianox/Quick_Whatsapp_Chat](https://github.com/emilianox/Quick_Whatsapp_Chat)
