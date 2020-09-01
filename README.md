@@ -30,6 +30,9 @@ npm run build:opera
 
 
 ## Release History
+* 2.0.5
+    * add lock button
+
 * 2.0.4
     * add firefox support
 

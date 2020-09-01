@@ -1,6 +1,6 @@
 {
   "name": "quick_whatsapp_chat",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "Chrome/Firefox extencion to start a Whatsapp chat without adding the number to contacts...",
   "private": true,
   "repository": "https://github.com:emilianox/Quick_Whatsapp_Chat.git",
