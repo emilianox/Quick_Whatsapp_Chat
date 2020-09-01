@@ -6,6 +6,9 @@ body {
   min-width: 24rem
 }
 
+.wa-color{
+  color: #2cb742;
+}
 
 #popup-root {
   input{
@@ -13,6 +16,18 @@ body {
     &:focus{
       outline: 0;
     }
+  }
+
+  .PhoneInput > input {
+    border-color: rgb(226, 232, 240);
+    @apply border-r-0 rounded-r-none;
+  }
+
+  .btn-lock-div{
+    @apply flex items-center bg-white
+     border border-gray-300 
+     rounded-sm rounded-l-none border-l-0
+     py-1 px-1 appearance-none leading-normal ;
   }
   
   .btn {
@@ -24,7 +39,7 @@ body {
   }
   
   .btn-blue:hover {
-    background-color: #177225;
+    background-color: #2cb742;
   }
   
   .grey-block{
