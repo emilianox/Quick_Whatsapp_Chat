@@ -111,11 +111,11 @@ module.exports = {
           },
           {
             loader: 'postcss-loader', // For autoprefixer
-            options: {
-              ident: 'postcss',
-              // eslint-disable-next-line global-require, @typescript-eslint/no-var-requires
-              plugins: [require('tailwindcss'), require('autoprefixer')()],
-            },
+            // options: {
+            //   ident: 'postcss',
+            //   // eslint-disable-next-line global-require, @typescript-eslint/no-var-requires
+            //   plugins: [require('tailwindcss'), require('autoprefixer')()],
+            // },
           },
           'resolve-url-loader', // Rewrites relative paths in url() statements
           'sass-loader', // Takes the Sass/SCSS file and compiles to the CSS

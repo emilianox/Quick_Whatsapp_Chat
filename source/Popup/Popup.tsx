@@ -1,25 +1,30 @@
 import React, {useState, useEffect} from 'react';
-import {browser, Tabs} from 'webextension-polyfill-ts';
+import {browser} from 'webextension-polyfill-ts';
 import debounce from 'lodash.debounce';
 
 import './styles.scss';
 
 import 'react-phone-number-input/style.css';
+import flags from 'react-phone-number-input/flags';
 import PhoneInput from 'react-phone-number-input';
 import {LockFill} from 'react-bootstrap-icons';
+import {History} from './History';
+import {isHistoryEnabled, openNumber, setHistoryEnabled} from './utils';
 
 const Popup: React.FC = () => {
   const [numberToChat, setNumberToChat] = useState<string>('');
-  const [prefixValue, setPrefixValue] = useState<string>('');
   const [isLoading, setIsLoading] = useState(false);
+
+  // START PREFIX
+  const [prefixValue, setPrefixValue] = useState<string>('');
   browser.storage.sync.get('prefixValue').then((result) => {
     setPrefixValue(result.prefixValue);
   });
 
-  function openWebPage(url: string): Promise<Tabs.Tab> {
-    return browser.tabs.create({url});
-  }
-
+  useEffect(() => {
+    debounce(() => setIsLoading(false), 700)();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLoading]);
   const changePrefix = (valueFromWidget: string): void => {
     const value = valueFromWidget || '';
     if (prefixValue !== value) {
@@ -29,26 +34,22 @@ const Popup: React.FC = () => {
       });
     }
   };
+  // END PREFIX
 
-  useEffect(() => {
-    debounce(() => setIsLoading(false), 700)();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoading]);
+  const [historyEnabledLocal, setHistoryEnabledLocal] = useState(
+    isHistoryEnabled()
+  );
+  // const [historyEnabled, setHistoryEnabled] = useState(false);
 
-  const handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void = (
-    event
-  ) => {
-    event.preventDefault();
-    return openWebPage(
-      `https://web.whatsapp.com/send?phone=${prefixValue}${numberToChat}`
-    ).then(() => {
-      window.close();
-    });
+  const toggleHistory = (): void => {
+    const newHistory = !historyEnabledLocal;
+    setHistoryEnabled(newHistory);
+    setHistoryEnabledLocal(newHistory);
   };
 
   return (
     <form
-      onSubmit={handleSubmit}
+      onSubmit={(e): void => openNumber(e, `${prefixValue}${numberToChat}`)}
       className="container mx-auto space-y-4 text-sm"
     >
       <div className="grey-block">
@@ -56,11 +57,13 @@ const Popup: React.FC = () => {
           Quick Whatsapp Chat:
         </label>
       </div>
-      <div className="flex px-3 space-x-1">
+      {/* PHONE BLOCK */}
+      <div className="phone-block">
         <div className="flex w-2/5">
           <PhoneInput
             id="Prefix"
             name="numberToCall"
+            flags={flags}
             international
             value={prefixValue}
             className="w-10/12"
@@ -87,8 +90,28 @@ const Popup: React.FC = () => {
           />
         </div>
       </div>
+
+      {/* HISTORY BLOCK */}
+      <div className="flex px-3 flex-col">
+        {historyEnabledLocal && <History />}
+      </div>
       <div className="px-3 pb-2 flex flex-row-reverse">
-        <input type="submit" className="btn btn-blue" value="Start chat" />
+        <label className="flex items-center space-x-3">
+          <input
+            type="checkbox"
+            checked={historyEnabledLocal}
+            onChange={toggleHistory}
+            className=" h-4 w-4 border border-gray-300 rounded-md checked:bg-blue-600 
+            checked:border-transparent focus:outline-none"
+          />
+          <span>
+            History Enabled<span className="font-extralight"> (Beta)</span>
+          </span>
+        </label>
+      </div>
+      {/* START CHAT */}
+      <div className="px-3 pb-2 flex flex-row-reverse">
+        <input type="submit" className="btn btn-submit" value="Start chat" />
       </div>
     </form>
   );

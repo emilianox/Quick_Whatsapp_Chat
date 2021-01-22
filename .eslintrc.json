@@ -1,15 +1,18 @@
 {
 	"env": {
-        "webextensions": true
-    },
+		"webextensions": true
+	},
 	"extends": [
+		"plugin:prettier/recommended", // Enables eslint-plugin-prettier and eslint-config-prettier. This will display prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
 		"@abhijithvijayan/eslint-config/typescript",
 		"@abhijithvijayan/eslint-config/react"
 	],
+	"plugins": ["prettier"],
 	"rules": {
 		"no-console": "off",
 		"no-extend-native": "off",
 		"react/jsx-props-no-spreading": "off",
-		"jsx-a11y/label-has-associated-control": "off"
+		"jsx-a11y/label-has-associated-control": "off",
+		"prettier/prettier": "error"
 	}
 }

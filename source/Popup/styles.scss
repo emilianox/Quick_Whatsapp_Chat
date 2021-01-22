@@ -3,48 +3,72 @@
 @tailwind utilities;
 
 body {
-  min-width: 24rem
+  min-width: 24rem;
 }
 
-.wa-color{
+.wa-color {
   color: #2cb742;
 }
 
 #popup-root {
-  input{
-    @apply bg-white border border-gray-300 rounded-sm py-1 px-1 appearance-none leading-normal ;
-    &:focus{
+  .phone-block {
+    @apply flex px-3 space-x-1;
+  }
+  .phone-block input {
+    @apply bg-white border border-gray-300 rounded-sm py-1 px-1 appearance-none leading-normal;
+    &:focus {
       outline: 0;
     }
   }
 
   .PhoneInput > input {
-    border-color: rgb(226, 232, 240);
     @apply border-r-0 rounded-r-none;
+    border-color: rgb(209, 213, 219);
   }
 
-  .btn-lock-div{
+  .btn-lock-div {
     @apply flex items-center bg-white
      border border-gray-300 
      rounded-sm rounded-l-none border-l-0
-     py-1 px-1 appearance-none leading-normal ;
+     py-1 px-1 appearance-none leading-normal;
   }
-  
+
   .btn {
     @apply font-bold py-2 px-4 rounded;
   }
-  .btn-blue {
+  .btn-submit {
     @apply text-white;
     background-color: #2cb742;
   }
-  
-  .btn-blue:hover {
+
+  .btn-submit:hover {
     background-color: #2cb742;
   }
-  
-  .grey-block{
+
+  .grey-block {
     @apply p-3;
-    border-bottom: 1px solid #E7E8EA;
-    background-color:#F7F9FA
+    border-bottom: 1px solid #e7e8ea;
+    background-color: #f7f9fa;
   }
+
+  #journal-scroll::-webkit-scrollbar {
+    width: 4px;
+    cursor: pointer;
+    /*background-color: rgba(229, 231, 235, var(--bg-opacity));*/
+  }
+  #journal-scroll::-webkit-scrollbar-track {
+    background-color: rgba(229, 231, 235, var(--bg-opacity));
+    cursor: pointer;
+    /*background: red;*/
+  }
+  #journal-scroll::-webkit-scrollbar-thumb {
+    cursor: pointer;
+    background-color: #a0aec0;
+    /*outline: 1px solid slategrey;*/
+  }
+}
+
+.history-item {
+  @apply relative transform scale-100 text-xs py-1 border-b-2 border-blue-100
+          cursor-default  bg-opacity-25;
 }
